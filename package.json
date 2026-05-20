@@ -1,0 +1,245 @@
+{
+  "name": "llm-context-copier",
+  "displayName": "LLM Context Copier",
+  "description": "Copy optimized project structure + file content for pasting into Claude, ChatGPT, Gemini, or any LLM — in one click.",
+  "version": "1.0.0",
+  "publisher": "AayushNayakJain",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Aayush-Nayak-Jain/llm-context-copier"
+  },
+  "bugs": {
+    "url": "https://github.com/Aayush-Nayak-Jain/llm-context-copier/issues"
+  },
+  "homepage": "https://github.com/Aayush-Nayak-Jain/llm-context-copier#readme",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Other",
+    "Snippets"
+  ],
+  "keywords": [
+    "llm",
+    "ai",
+    "claude",
+    "chatgpt",
+    "gemini",
+    "context",
+    "copy",
+    "prompt",
+    "project structure",
+    "code context"
+  ],
+  "activationEvents": [],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "llmContextCopy.copyFileWithStructure",
+        "title": "Copy for LLM: File + Project Structure",
+        "category": "LLM Context Copy",
+        "icon": "$(clippy)"
+      },
+      {
+        "command": "llmContextCopy.copyStructureOnly",
+        "title": "Copy for LLM: Project Structure Only",
+        "category": "LLM Context Copy",
+        "icon": "$(list-tree)"
+      },
+      {
+        "command": "llmContextCopy.copyFileOnly",
+        "title": "Copy for LLM: Active File Only",
+        "category": "LLM Context Copy",
+        "icon": "$(file-code)"
+      },
+      {
+        "command": "llmContextCopy.copyOpenEditors",
+        "title": "Copy for LLM: All Open Editors + Structure",
+        "category": "LLM Context Copy",
+        "icon": "$(files)"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "submenu": "llmContextCopy.submenu",
+          "group": "navigation@99",
+          "when": "explorerViewletVisible"
+        }
+      ],
+      "editor/context": [
+        {
+          "submenu": "llmContextCopy.submenu",
+          "group": "1_modification@99"
+        }
+      ],
+      "editor/title/context": [
+        {
+          "command": "llmContextCopy.copyFileWithStructure",
+          "group": "navigation@99"
+        }
+      ],
+      "llmContextCopy.submenu": [
+        {
+          "command": "llmContextCopy.copyFileWithStructure",
+          "group": "1@1",
+          "when": "!explorerResourceIsFolder"
+        },
+        {
+          "command": "llmContextCopy.copyStructureOnly",
+          "group": "1@2"
+        },
+        {
+          "command": "llmContextCopy.copyFileOnly",
+          "group": "1@3",
+          "when": "!explorerResourceIsFolder"
+        },
+        {
+          "command": "llmContextCopy.copyOpenEditors",
+          "group": "1@4"
+        }
+      ],
+      "commandPalette": [
+        { "command": "llmContextCopy.copyFileWithStructure" },
+        { "command": "llmContextCopy.copyStructureOnly" },
+        { "command": "llmContextCopy.copyFileOnly" },
+        { "command": "llmContextCopy.copyOpenEditors" }
+      ]
+    },
+    "submenus": [
+      {
+        "id": "llmContextCopy.submenu",
+        "label": "$(clippy) Copy for LLM"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "llmContextCopy.copyFileWithStructure",
+        "key": "ctrl+alt+c",
+        "mac": "cmd+alt+c",
+        "when": "editorFocus || filesExplorerFocus"
+      },
+      {
+        "command": "llmContextCopy.copyStructureOnly",
+        "key": "ctrl+alt+shift+c",
+        "mac": "cmd+alt+shift+c"
+      }
+    ],
+    "configuration": {
+      "title": "LLM Context Copy",
+      "properties": {
+        "llmContextCopy.excludePatterns": {
+          "type": "array",
+          "items": { "type": "string" },
+          "default": [
+            "node_modules",
+            ".git",
+            ".svn",
+            ".hg",
+            "dist",
+            "build",
+            "out",
+            ".next",
+            ".nuxt",
+            ".output",
+            ".svelte-kit",
+            "coverage",
+            ".nyc_output",
+            "__pycache__",
+            ".pytest_cache",
+            ".mypy_cache",
+            ".ruff_cache",
+            "target",
+            ".gradle",
+            ".idea",
+            ".vscode",
+            "*.pyc",
+            "*.pyo",
+            ".DS_Store",
+            "Thumbs.db",
+            "*.log",
+            "package-lock.json",
+            "yarn.lock",
+            "pnpm-lock.yaml",
+            "poetry.lock",
+            "Cargo.lock",
+            "go.sum",
+            "*.min.js",
+            "*.min.css",
+            "*.map",
+            "*.vsix",
+            ".env.local",
+            ".env.*.local"
+          ],
+          "markdownDescription": "Glob patterns and directory names to exclude from the project tree. Supports `*` wildcards."
+        },
+        "llmContextCopy.maxFileSizeKb": {
+          "type": "number",
+          "default": 150,
+          "minimum": 1,
+          "maximum": 10240,
+          "markdownDescription": "Maximum file size in **KB** to include content. Files larger than this show a placeholder instead of content."
+        },
+        "llmContextCopy.maxTreeDepth": {
+          "type": "number",
+          "default": 10,
+          "minimum": 1,
+          "maximum": 20,
+          "description": "Maximum depth of the project file tree."
+        },
+        "llmContextCopy.includeFileStats": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show file size and line count next to each file in the tree and in the file header."
+        },
+        "llmContextCopy.outputFormat": {
+          "type": "string",
+          "enum": ["markdown", "xml", "plain"],
+          "enumDescriptions": [
+            "Markdown with fenced code blocks — best for Claude, ChatGPT, Gemini",
+            "XML tags — useful for structured prompts and Claude system prompts",
+            "Plain text — no special formatting"
+          ],
+          "default": "markdown",
+          "description": "Output format for the copied context."
+        },
+        "llmContextCopy.includeGitInfo": {
+          "type": "boolean",
+          "default": true,
+          "description": "Include the current git branch name in the context header."
+        },
+        "llmContextCopy.respectGitignore": {
+          "type": "boolean",
+          "default": true,
+          "description": "Parse .gitignore and exclude matching files from the tree."
+        },
+        "llmContextCopy.showTokenEstimate": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show an estimated token count in the status bar notification after copying."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run bundle",
+    "compile": "tsc --noEmit",
+    "bundle": "node esbuild.config.mjs",
+    "bundle:watch": "node esbuild.config.mjs --watch",
+    "lint": "eslint src --ext .ts",
+    "package": "npm run bundle && vsce package --no-dependencies",
+    "publish": "npm run bundle && vsce publish --no-dependencies"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/vscode": "^1.90.0",
+    "@typescript-eslint/eslint-plugin": "^8.0.0",
+    "@typescript-eslint/parser": "^8.0.0",
+    "@vscode/vsce": "^3.0.0",
+    "esbuild": "^0.28.0",
+    "eslint": "^9.0.0",
+    "typescript": "^5.8.0"
+  }
+}
