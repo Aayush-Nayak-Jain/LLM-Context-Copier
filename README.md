@@ -4,14 +4,7 @@
 
 ### One right-click. Your entire codebase context — ready for any AI.
 
-[![VS Code Marketplace](https://img.shields.io/visual-studio-marketplace/v/your-publisher-id.llm-context-copy?color=007ACC&label=VS%20Code%20Marketplace&logo=visual-studio-code)](https://marketplace.visualstudio.com/items?itemName=your-publisher-id.llm-context-copy)
-[![Installs](https://img.shields.io/visual-studio-marketplace/i/your-publisher-id.llm-context-copy?color=brightgreen)](https://marketplace.visualstudio.com/items?itemName=your-publisher-id.llm-context-copy)
-[![Rating](https://img.shields.io/visual-studio-marketplace/r/your-publisher-id.llm-context-copy)](https://marketplace.visualstudio.com/items?itemName=your-publisher-id.llm-context-copy)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-
-<br/>
-
-**[Install from Marketplace](#-installation) · [Report Bug](https://github.com/your-username/llm-context-copy/issues) · [Request Feature](https://github.com/your-username/llm-context-copy/issues)**
+**[Install from Marketplace](https://marketplace.visualstudio.com/items?itemName=AayushNayakJain.llm-context-copier) · [Report Bug](https://github.com/Aayush-Nayak-Jain/LLM-Context-Copier/issues) · [Request Feature](https://github.com/Aayush-Nayak-Jain/LLM-Context-Copier/issues)**
 
 </div>
 
@@ -105,7 +98,7 @@ There are **zero runtime `node_modules`** — everything is bundled into a singl
 4. Click **Install**
 
 **Option B — Install from browser:**
-1. Go to the [Marketplace page](https://marketplace.visualstudio.com/items?itemName=your-publisher-id.llm-context-copy)
+1. Go to the [Marketplace page](https://marketplace.visualstudio.com/items?itemName=AayushNayakJain.llm-context-copier)
 2. Click the green **Install** button
 3. Allow the browser to open VS Code when prompted
 4. Click **Install** in the VS Code dialog that appears
@@ -114,7 +107,7 @@ There are **zero runtime `node_modules`** — everything is bundled into a singl
 
 ### Method 2 — Install from `.vsix` (offline / pre-release)
 
-Use this if you downloaded a `.vsix` file directly from the [Releases page](https://github.com/your-username/llm-context-copy/releases).
+Use this if you downloaded a `.vsix` file directly from the [Releases page](https://github.com/Aayush-Nayak-Jain/LLM-Context-Copier/releases).
 
 **Via terminal:**
 ```bash
@@ -308,4 +301,4 @@ Your code never leaves your machine until you paste it yourself.
 
 ## 📄 License
 
-MIT © [your-name](https://github.com/your-username)
+MIT © Aayush Nayak Jain
