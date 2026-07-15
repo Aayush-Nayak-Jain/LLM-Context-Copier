@@ -17,3 +17,4 @@ All notable changes to **LLM Context Copy** will be documented in this file.
 - Git branch name in context header
 - Token-count estimate notification after copy
 - Fully configurable via VS Code settings
+- A logo for extension
