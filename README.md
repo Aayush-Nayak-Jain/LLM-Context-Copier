@@ -128,7 +128,7 @@ Use this if you want to modify the extension or contribute to it.
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/your-username/llm-context-copy
+git clone https://github.com/Aayush-Nayak-Jain/llm-context-copy
 cd llm-context-copy
 
 # 2. Install dev dependencies
